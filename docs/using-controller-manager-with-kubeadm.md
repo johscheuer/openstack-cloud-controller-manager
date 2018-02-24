@@ -14,9 +14,7 @@ Then follow the usual steps to bootstrap the other nodes using `kubeadm join`
 
 Step 3: build the container image using the following (`make bootstrap` will download go SDK and glide if needed)
 ```
-export GOOS=linux
-make images
-unset GOOS
+GOOS=linux make images
 ```
 
 Save the image using:
@@ -37,7 +35,7 @@ kubectl create configmap cloud-config --from-file=/etc/kubernetes/cloud-config -
 
 Step 5: Deploy controller manager
 
-Option #1 - Using a single pod with the definition in `manifests/ontroller-manager/openstack-cloud-controller-manager-pod.yaml`
+Option #1 - Using a single pod with the definition in `manifests/controller-manager/openstack-cloud-controller-manager-pod.yaml`
 ```
 kubectl create -f manifests/controller-manager/openstack-cloud-controller-manager-pod.yaml
 ```
